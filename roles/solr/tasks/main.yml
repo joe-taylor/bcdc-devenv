@@ -1,0 +1,31 @@
+---
+
+- name: Ensure Java, ant, and ivy are installed
+  become: true
+  yum:
+    name:
+      - java-1.8.0-openjdk-devel
+      - ant
+      - ivy
+    state: present
+
+- name: Download solr src package
+  get_url:
+    url: https://archive.apache.org/dist/lucene/solr/6.6.0/solr-6.6.0-src.tgz
+    dest: /home/vagrant/solr-6.6.0-src.tgz
+
+- name: Unarchive solr
+  unarchive:
+    src: /home/vagrant/solr-6.6.0-src.tgz
+    dest: /home/vagrant
+    remote_src: true
+
+- name: Build solr
+  shell:
+    cmd: ant
+    chdir: /home/vagrant/solr-6.6.0
+
+- name: Configure solr bin permissions
+  file:
+    path: /home/vagrant/solr-6.6.0/solr/bin/solr
+    mode: 0755

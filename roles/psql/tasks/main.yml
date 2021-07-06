@@ -1,0 +1,100 @@
+---
+- name: Install python prerequisites for postgres
+  become: true
+  yum:
+    name: python-psycopg2
+    state: present
+
+- name: Check if postgres' data dir is empty
+  become: true
+  stat:
+    path: /var/lib/pgsql/9.6/data/
+  register: data_dir
+
+- name: Install postgres 9.6 if the data dir is empty
+  become: true
+  yum:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - https://download.postgresql.org/pub/repos/yum/9.6/redhat/rhel-7-x86_64/postgresql96-libs-9.6.22-1PGDG.rhel7.x86_64.rpm
+    - https://download.postgresql.org/pub/repos/yum/9.6/redhat/rhel-7-x86_64/postgresql96-9.6.22-1PGDG.rhel7.x86_64.rpm
+    - https://download.postgresql.org/pub/repos/yum/9.6/redhat/rhel-7-x86_64/postgresql96-devel-9.6.22-1PGDG.rhel7.x86_64.rpm
+    - https://download.postgresql.org/pub/repos/yum/9.6/redhat/rhel-7-x86_64/postgresql96-server-9.6.22-1PGDG.rhel7.x86_64.rpm
+    - https://download.postgresql.org/pub/repos/yum/9.6/redhat/rhel-7-x86_64/postgresql96-contrib-9.6.22-1PGDG.rhel7.x86_64.rpm
+  when: not data_dir.stat.exists
+
+- name: Init postgres db if the data dir is empty
+  become: true
+  shell: /usr/pgsql-9.6/bin/postgresql96-setup initdb
+  when: not data_dir.stat.exists
+
+- name: Start postgres service
+  become: true
+  service:
+    name: postgresql-9.6
+    state: started
+    enabled: true
+
+- name: Create ckan postgres user
+  become: true
+  become_user: postgres
+  postgresql_user:
+    name: ckan
+    password: ckan
+
+- name: Create datastore postgres user
+  become: true
+  become_user: postgres
+  postgresql_user:
+    name: datastore
+    password: datastore    
+
+- name: Create ckan database
+  become: true
+  become_user: postgres
+  postgresql_db:
+    name: ckan
+    encoding: UTF-8
+    owner: ckan
+
+- name: Create datastore database
+  become: true
+  become_user: postgres
+  postgresql_db:
+    name: datastore
+    encoding: UTF-8
+    owner: ckan
+
+- name: Create users
+  become: true
+  user:
+    name:
+      - ckan
+      - datastore
+# - name: Set up password authentication for socket connections
+#   become: true
+#   lineinfile:
+#     path: /var/lib/pgsql/9.6/data/pg_hba.conf
+#     regexp: "^local\\s+all"
+#     line: "local   all             all                                     password"
+
+# - name: Set up password authentication for ipv4
+#   become: true
+#   lineinfile:
+#     path: /var/lib/pgsql/9.6/data/pg_hba.conf
+#     regexp: "^host\\s+all\\s+all\\s+127"
+#     line: "host    all             all             127.0.0.1/32            password"
+
+# - name: Set up password authentication for ipv6
+#   become: true
+#   lineinfile:
+#     path: /var/lib/pgsql/9.6/data/pg_hba.conf
+#     regexp: "^host\\s+all\\s+all\\s+:"
+#     line: "host    all             all             ::1/128                 password"
+
+- name: Reload postgres service
+  become: true
+  service:
+    name: postgresql-9.6
+    state: reloaded

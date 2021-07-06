@@ -1,0 +1,51 @@
+---
+
+- name: Install python dev dependencies
+  become: true
+  yum:
+    name:
+      - openssl-devel
+      - bzip2-devel
+      - sqlite-devel
+      - libcurl-devel
+      - pcre-devel
+      - python-devel
+      - zlib-devel
+    state: present
+
+- name: Ensure compiler is available
+  become: true
+  yum:
+    name: "@Development tools"
+    state: present
+
+- name: Create destination directory for python installation
+  become: true
+  file:
+    path: /s00/python
+    state: directory
+    owner: vagrant    
+
+- name: Download custom python
+  get_url:
+    url: https://www.python.org/ftp/python/2.7.16/Python-2.7.16.tgz
+    dest: /home/vagrant/Python-2.7.16.tgz
+  register: python_downloaded
+
+- name: Extract python archive
+  unarchive:
+    src: /home/vagrant/Python-2.7.16.tgz
+    dest: /home/vagrant
+    remote_src: yes
+  when: python_downloaded.changed
+
+- name: Configure and install
+  shell:
+    cmd: ./configure --prefix=/s00/python && make && make install
+    chdir: /home/vagrant/Python-2.7.16
+  when: python_downloaded.changed
+
+- name: Install pip and virtualenv
+  shell:
+    cmd: /s00/python/bin/python -m ensurepip && /s00/python/bin/pip install virtualenv
+  when: python_downloaded.changed

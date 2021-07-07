@@ -19,7 +19,20 @@ postgres, but also NoSQL options like SOLR.
 | Purpose | Hosting CKAN Apps |
 | --- | --- |
 
+**Apps and services**
+
+ - CKAN
+   - CKAN plugins
+ - Datastore
+ - Redis (latest)
+
+
 ### enceladus.local (192.168.15.102)
 
 | Purpose | Hosting Database and Datastore |
 | --- | --- |
+
+**Apps and services**
+
+ - Postgres (9.6)
+ - Solr (6.6.0)

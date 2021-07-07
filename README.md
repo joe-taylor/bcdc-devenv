@@ -1,5 +1,3 @@
-> ⚠️ **Work in progress.** This does not yet produce anything useful.
-
 **Contents**
 
 1. [Objective](#objective)
@@ -8,6 +6,8 @@
 1. [Repos used](#repos-used)
 
 # BC Data Catalogue Dev Environment
+
+> ⚠️ **Work in progress.** Please do not rely on this repo to create a functioning development environment; it is under active development.
 
 We want to make the creation of BCDC development environments as easy as
 typing a single command:  `vagrant up`. Or perhaps two: `docker-compose up && vagrant up`.

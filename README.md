@@ -15,6 +15,8 @@ enceladus, are for "old UI" CKAN app and databases respectively. We use the
 word "databases" loosely; it not only encompasses postgres, but also NoSQL
 options like Solr.
 
+## Provisioned Boxes
+
 ### titan.local (192.168.15.101)
 
 **Purpose:** Hosting apps (old UI)

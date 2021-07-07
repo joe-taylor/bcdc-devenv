@@ -7,6 +7,7 @@
 1. [Requirements](#requirements)
 1. [What's provisioned](#whats-provisioned)
 1. [Repos used](#repos-used)
+2. [Enhancement ideas](#enhancement-ideas)
 
 ## Overview
 

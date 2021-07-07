@@ -46,10 +46,11 @@ corresponding entries to /etc/hosts. Alternatively, configure DNS.
 **Apps and services**
 
  - [CKAN](https://github.com/ckan/ckan/tree/ckan-2.7.5) (2.7.5) ; plugins:
-   - [ckanext-bcgov](https://github.com/bcgov/ckanext-bcgov/tree/1.7.27) (1.7.27)
+   - [ckanext-bcgov](https://github.com/bcgov/ckanext-bcgov/tree/1.7.27) (1.7.27) *- use requirements.txt to populate virtualenv*
  - [Datapusher](https://github.com/ckan/datapusher/tree/0.0.15) (0.0.15)
  - Redis (2.8.19)
  - Python (2.7.16)
+    - virtualenv + pip (???)
  - uwsgi (???)
 
 ---

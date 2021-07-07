@@ -10,9 +10,10 @@ there.
 
 ## Objective
 
-This should produce two CentOS 7 instances. One is for the app, and the other
-is for the databases, with the term used loosely to not only encompass
-postgres, but also NoSQL options like SOLR.
+This should produce several CentOS 7 instances. The main two, titan and
+enceladus, are for "old UI" CKAN app and databases respectively. We use the
+word "databases" loosely; it not only encompasses postgres, but also NoSQL
+options like SOLR.
 
 ### titan.local (192.168.15.101)
 
@@ -43,7 +44,7 @@ postgres, but also NoSQL options like SOLR.
 **Apps and services**
 
  - [ckanext-bcgov-schema](https://github.com/bcgov/ckanext-bcgov-schema/tree/master)
- - Jenkins?
+ - Jenkins
 
 
 ### europa.local (192.168.15.201)

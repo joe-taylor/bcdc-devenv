@@ -28,10 +28,10 @@ For consistencies sake, the private network does not use DHCP, so the
 following local IP addresses are hardcoded and must be available for
 Virtualbox to bind to:
 
-    192.168.15.101
-    192.168.15.102
-    192.168.15.150
-    192.168.15.201
+    192.168.15.101 titan
+    192.168.15.102 enceladus
+    192.168.15.150 vesta
+    192.168.15.201 europa
 
 
 ## Provisioned Boxes

@@ -50,6 +50,7 @@ corresponding entries to /etc/hosts. Alternatively, configure DNS.
  - [Datapusher](https://github.com/ckan/datapusher/tree/0.0.15) (0.0.15)
  - Redis (2.8.19)
  - Python (2.7.16)
+ - uwsgi (???)
 
 ---
 

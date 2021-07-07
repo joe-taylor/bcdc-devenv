@@ -16,7 +16,7 @@ postgres, but also NoSQL options like SOLR.
 
 ### titan.local (192.168.15.101)
 
-**Purpose:** Apps
+**Purpose:** Hosting apps (old UI)
 
 **Apps and services**
 
@@ -28,9 +28,29 @@ postgres, but also NoSQL options like SOLR.
 
 ### enceladus.local (192.168.15.102)
 
-**Purpose:** Data
+**Purpose:** Hosting data (old and new UI)
 
 **Apps and services**
 
  - Postgres (9.6)
  - Solr (6.6.0)
+
+
+### vesta.local (192.168.15.150)
+
+**Purpose:** Maintenance tasks and migrations
+
+**Apps and services**
+
+ - [ckanext-bcgov-schema](https://github.com/bcgov/ckanext-bcgov-schema/tree/master)
+ - Jenkins?
+
+
+### europa.local (192.168.15.201)
+
+**Purpose:** Hosting apps (new UI)
+
+**Apps and services**
+
+ - CKAN
+ - CKAN UI

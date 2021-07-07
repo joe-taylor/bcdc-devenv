@@ -21,9 +21,9 @@ postgres, but also NoSQL options like SOLR.
 
 **Apps and services**
 
- - CKAN
-   - CKAN plugins
- - Datastore
+ - [CKAN](https://github.com/ckan/ckan/tree/ckan-2.7.5) (2.7.5)
+   - [ckanext-bcgov](https://github.com/bcgov/ckanext-bcgov/tree/1.7.27) (1.7.27)
+ - [Datapusher](https://github.com/ckan/datapusher/tree/0.0.15) (0.0.15)
  - Redis (latest)
 
 

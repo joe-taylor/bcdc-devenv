@@ -49,6 +49,7 @@ corresponding entries to /etc/hosts. Alternatively, configure DNS.
    - [ckanext-bcgov](https://github.com/bcgov/ckanext-bcgov/tree/1.7.27) (1.7.27)
  - [Datapusher](https://github.com/ckan/datapusher/tree/0.0.15) (0.0.15)
  - Redis (2.8.19)
+ - Python (2.7.16)
 
 ---
 

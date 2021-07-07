@@ -99,3 +99,9 @@ Source files are available on host via a Vagrant Synced Folder (NFS).
  - CKAN UI
 
 Source files are available on host via a Vagrant Synced Folder (NFS).
+
+## Repos used
+
+ - ckan/ckan
+ - bcgov/ckanext-bcgov
+ - bcgov/ckanext-bcgov-schema

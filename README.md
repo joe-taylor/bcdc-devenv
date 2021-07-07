@@ -41,7 +41,7 @@ corresponding entries to /etc/hosts. Alternatively, configure DNS.
 
 ### titan.local (192.168.15.101)
 
-**OS:** CentOS 8
+**OS:** CentOS 8. 
 **Purpose:** Hosting apps (old UI)
 
 **Apps and services**

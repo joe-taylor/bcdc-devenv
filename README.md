@@ -59,7 +59,7 @@ corresponding entries to /etc/hosts. Alternatively, configure DNS.
 **Apps and services**
 
  - Postgres (9.6)
- - Solr (6.6.0)
+ - Solr (7.2.1)
 
 ---
 

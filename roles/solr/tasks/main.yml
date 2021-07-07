@@ -1,54 +1,33 @@
 ---
 
-- name: ensure java, ant, and ivy are installed
+- name: disable selinux
+  ansible.posix.selinux:
+    state: disabled
+
+- name: ensure solr dependencies are installed
   become: true
   yum:
     name:
       - java-1.8.0-openjdk-devel
-      - ant
-      - ivy
+      - lsof
     state: present
 
-- name: download solr src package
+- name: download solr
   get_url:
-    url: https://archive.apache.org/dist/lucene/solr/{{solr_version}}/solr-{{solr_version}}-src.tgz
+    url: https://archive.apache.org/dist/lucene/solr/{{solr_version}}/solr-{{solr_version}}.tgz
     dest: /home/vagrant/solr-{{solr_version}}.tgz
 
-- name: unarchive solr
-  unarchive:
-    src: /home/vagrant/solr-{{solr_version}}.tgz
-    dest: /home/vagrant
-    remote_src: true
-
-- name: build solr
+- name: install solr service
   become: true
   shell:
-    cmd: ant
-    chdir: /home/vagrant/solr-{{solr_version}}
+    cmd: |
+      cd /home/vagrant
+      tar xzf solr-{{solr_version}}.tgz solr-{{solr_version}}/bin/install_solr_service.sh --strip-components=2
+      ./install_solr_service.sh solr-{{solr_version}}.tgz -f -n
 
-- name: fix install dir
-  lineinfile:
-    path: /home/vagrant/solr-6.6.6/solr/bin/init.d/solr
-    regexp: ^SOLR_INSTALL_DIR=
-    line: SOLR_INSTALL_DIR="/home/vagrant/solr-6.6.6/solr"
-    group: root
-    owner: root
-    mode: '0755'
-
-
-# - name: compile solr
-#   become: true
-#   shell:
-#     cmd: ant && ant server
-#     chdir: /home/vagrant/solr-{{solr_version}}/
-
-
-# - name: Build solr
-#   shell:
-#     cmd: ant
-#     chdir: /home/vagrant/solr-6.6.0
-
-# - name: Configure solr bin permissions
-#   file:
-#     path: /home/vagrant/solr-6.6.0/solr/bin/solr
-#     mode: 0755
+- name: configure solr to start on boot
+  become: true
+  service:
+    name: solr
+    state: started
+    enabled: true

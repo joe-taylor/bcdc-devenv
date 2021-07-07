@@ -4,3 +4,7 @@
   become: true
   roles:
     - custompython
+    - redis
+    - virtualenvs
+    # - ckan
+    # - datapusher

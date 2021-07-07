@@ -1,0 +1,8 @@
+---
+- name: create datapusher virtualenv
+  pip:
+    name: git+https://github.com/ckan/datapusher.git@0.0.15#egg=datapusher
+    editable: true
+    virtualenv: /home/vagrant/venvs/datapusher
+    virtualenv_command: /s00/python/bin/virtualenv
+    virtualenv_python: /s00/python/bin/python

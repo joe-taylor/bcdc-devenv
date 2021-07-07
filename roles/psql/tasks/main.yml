@@ -2,7 +2,7 @@
 - name: Install python prerequisites for postgres
   become: true
   yum:
-    name: python2-psycopg2
+    name: python3-psycopg2
     state: present
 
 - name: Check if postgres' data dir is empty

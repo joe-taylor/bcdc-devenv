@@ -1,5 +1,10 @@
 > ⚠️ **Work in progress.** This does not yet produce anything useful.
 
+1. [Objective](#objective)
+1. [Requirements](#requirements)
+1. [What's provisioned](#whats-provisioned)
+1. [Repos used](#repos-used)
+
 # BC Data Catalogue Dev Environment
 
 We want to make the creation of BCDC development environments as easy as

@@ -5,7 +5,8 @@ typing a single command:  `vagrant up`.
 
 The Vagrantfile leans heavily on ansible for provisioning. The provisioning
 part is a work in progress. Running `vagrant up` will not yet produce a
-working instance of the BC Data Catalogue, but we're getting there.
+working instance of the BC Data Catalogue, but our goal is to eventually get
+there.
 
 ## Objective
 

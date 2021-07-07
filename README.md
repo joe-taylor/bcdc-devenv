@@ -128,7 +128,7 @@ Source files are available on host via a Vagrant Synced Folder (NFS).
 **Apps and services**
 
  - [ckanext-bcgov-schema](https://github.com/bcgov/ckanext-bcgov-schema/tree/master) (latest)
- - Jenkins (7.2.1)
+ - Jenkins (2.204.1)
 
 Source files are available on host via a Vagrant Synced Folder (NFS).
 

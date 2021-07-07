@@ -3,7 +3,7 @@
 # BC Data Catalogue Dev Environment
 
 We want to make the creation of BCDC development environments as easy as
-typing a single command:  `vagrant up`.
+typing a single command:  `vagrant up`. Or perhaps two: `docker-compose up && vagrant up`.
 
 We lean on Vagrant to create our development environment, and Vagrant in turn leans heavily on ansible for provisioning. Provisioning is a work in
 progress, far from complete; running `vagrant up` will not yet produce a

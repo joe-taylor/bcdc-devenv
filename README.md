@@ -20,6 +20,20 @@ against these dev instances.
 
 Finally, there's a box called europa which houses the future UI.
 
+## Requirements
+
+You'll need to have VirtualBox and Vagrant installed on your system.
+
+For consistencies sake, the private network does not use DHCP, so the
+following local IP addresses are hardcoded and must be available for
+Virtualbox to bind to:
+
+    192.168.15.101
+    192.168.15.102
+    192.168.15.150
+    192.168.15.201
+
+
 ## Provisioned Boxes
 
 ### titan.local (192.168.15.101)

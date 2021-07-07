@@ -1,5 +1,7 @@
 > ⚠️ **Work in progress.** This does not yet produce anything useful.
 
+## TOC
+
 1. [Objective](#objective)
 1. [Requirements](#requirements)
 1. [What's provisioned](#whats-provisioned)

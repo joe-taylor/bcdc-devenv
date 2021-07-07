@@ -33,6 +33,9 @@ Virtualbox to bind to:
     192.168.15.150 vesta
     192.168.15.201 europa
 
+If you want to access servers by name from your host operating system, add the
+corresponding entries to /etc/hosts. Alternatively, configure DNS.
+
 
 ## Provisioned Boxes
 

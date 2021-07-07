@@ -66,12 +66,13 @@
     encoding: UTF-8
     owner: ckan
 
-- name: Create users
+- name: create system users
   become: true
   user:
-    name:
-      - ckan
-      - datastore
+    name: "{{ item }}"
+  loop:
+    - ckan
+    - datastore
 # - name: Set up password authentication for socket connections
 #   become: true
 #   lineinfile:

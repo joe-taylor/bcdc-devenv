@@ -1,6 +1,6 @@
 ---
 
-- name: Ensure Java, ant, and ivy are installed
+- name: ensure java, ant, and ivy are installed
   become: true
   yum:
     name:
@@ -9,23 +9,46 @@
       - ivy
     state: present
 
-- name: Download solr src package
+- name: download solr src package
   get_url:
-    url: https://archive.apache.org/dist/lucene/solr/6.6.0/solr-6.6.0-src.tgz
-    dest: /home/vagrant/solr-6.6.0-src.tgz
+    url: https://archive.apache.org/dist/lucene/solr/{{solr_version}}/solr-{{solr_version}}-src.tgz
+    dest: /home/vagrant/solr-{{solr_version}}.tgz
 
-- name: Unarchive solr
+- name: unarchive solr
   unarchive:
-    src: /home/vagrant/solr-6.6.0-src.tgz
+    src: /home/vagrant/solr-{{solr_version}}.tgz
     dest: /home/vagrant
     remote_src: true
 
-- name: Build solr
+- name: build solr
+  become: true
   shell:
     cmd: ant
-    chdir: /home/vagrant/solr-6.6.0
+    chdir: /home/vagrant/solr-{{solr_version}}
 
-- name: Configure solr bin permissions
-  file:
-    path: /home/vagrant/solr-6.6.0/solr/bin/solr
-    mode: 0755
+- name: fix install dir
+  lineinfile:
+    path: /home/vagrant/solr-6.6.6/solr/bin/init.d/solr
+    regexp: ^SOLR_INSTALL_DIR=
+    line: SOLR_INSTALL_DIR="/home/vagrant/solr-6.6.6/solr"
+    group: root
+    owner: root
+    mode: '0755'
+
+
+# - name: compile solr
+#   become: true
+#   shell:
+#     cmd: ant && ant server
+#     chdir: /home/vagrant/solr-{{solr_version}}/
+
+
+# - name: Build solr
+#   shell:
+#     cmd: ant
+#     chdir: /home/vagrant/solr-6.6.0
+
+# - name: Configure solr bin permissions
+#   file:
+#     path: /home/vagrant/solr-6.6.0/solr/bin/solr
+#     mode: 0755

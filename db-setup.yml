@@ -1,0 +1,7 @@
+---
+- name: set up database server
+  hosts: db
+  become: true
+  roles:
+    - psql
+    - solr

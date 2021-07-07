@@ -3,8 +3,8 @@
 We want to make spinning up working BCDC development environment as easy as
 typing a single command:  `vagrant up`.
 
-The Vagrantfile leans heavily on ansible for provisioning. The provisioning
-part is a work in progress. Running `vagrant up` will not yet produce a
+The Vagrantfile leans heavily on ansible for provisioning. This is a work in
+progress, far from complete; running `vagrant up` will not yet produce a
 working instance of the BC Data Catalogue, but our goal is to eventually get
 there.
 

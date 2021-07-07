@@ -50,9 +50,10 @@ corresponding entries to /etc/hosts. Alternatively, configure DNS.
    - [ckanext-bcgov](https://github.com/bcgov/ckanext-bcgov/tree/1.7.27) (1.7.27) *- use requirements.txt to populate virtualenv*
  - [Datapusher](https://github.com/ckan/datapusher/tree/0.0.15) (0.0.15)
  - Redis (2.8.19)
- - Python (2.7.16)
-    - virtualenv + pip (???)
- - uwsgi (???)
+ - Python (2.7.16 & 2.7.17)
+    - virtualenv
+    - pip (20.3.4)
+ - uwsgi (2.0.17.1)
  - gunicorn (???)
 
 **Python virtualenvs**

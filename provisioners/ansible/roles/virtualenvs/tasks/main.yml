@@ -1,8 +1,21 @@
 ---
+- name: delete existing virtualenvs
+  file:
+    path: /home/vagrant/venvs
+    state: absent
+
 - name: create datapusher virtualenv
   pip:
     name: git+https://github.com/ckan/datapusher.git@0.0.15#egg=datapusher
     editable: true
     virtualenv: /home/vagrant/venvs/datapusher
+    virtualenv_command: /s00/python/bin/virtualenv
+    virtualenv_python: /s00/python/bin/python
+
+- name: create ckan virtualenv
+  pip:
+    name: git+https://github.com/bcgov/ckanext-bcgov.git@1.7.27#egg=ckanext
+    editable: true
+    virtualenv: /home/vagrant/venvs/ckan
     virtualenv_command: /s00/python/bin/virtualenv
     virtualenv_python: /s00/python/bin/python

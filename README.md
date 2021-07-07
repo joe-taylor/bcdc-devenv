@@ -1,4 +1,4 @@
-| ⚠️ **This is a work in progress
+| ⚠️ **Work in progress.** This does not yet produce anything useful.
 
 # BC Data Catalogue Dev Environment
 

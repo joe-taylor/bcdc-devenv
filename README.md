@@ -1,6 +1,6 @@
 # BC Data Catalogue Dev Environment
 
-We want to make spinning up working BCDC development environment as easy as
+We want to make the creation of BCDC development environments as easy as
 typing a single command:  `vagrant up`.
 
 The Vagrantfile leans heavily on ansible for provisioning. This is a work in

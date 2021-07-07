@@ -37,7 +37,7 @@ If you want to access servers by name from your host operating system, add the
 corresponding entries to /etc/hosts. Alternatively, configure DNS.
 
 
-## Provisioned Boxes
+## What's provisioned
 
 ### titan.local (192.168.15.101)
 

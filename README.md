@@ -45,7 +45,7 @@ corresponding entries to /etc/hosts. Alternatively, configure DNS.
 
 **Apps and services**
 
- - [CKAN](https://github.com/ckan/ckan/tree/ckan-2.7.5) (2.7.5)
+ - [CKAN](https://github.com/ckan/ckan/tree/ckan-2.7.5) (2.7.5) ; plugins:
    - [ckanext-bcgov](https://github.com/bcgov/ckanext-bcgov/tree/1.7.27) (1.7.27)
  - [Datapusher](https://github.com/ckan/datapusher/tree/0.0.15) (0.0.15)
  - Redis (2.8.19)

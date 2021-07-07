@@ -13,7 +13,7 @@ there.
 This should produce several CentOS 7 instances. The main two, titan and
 enceladus, are for "old UI" CKAN app and databases respectively. We use the
 word "databases" loosely; it not only encompasses postgres, but also NoSQL
-options like SOLR.
+options like Solr.
 
 ### titan.local (192.168.15.101)
 

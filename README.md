@@ -29,8 +29,8 @@ postgres, but also NoSQL options like SOLR.
 
 ### enceladus.local (192.168.15.102)
 
-| === | --- |
 | Purpose | Hosting Database and Datastore |
+| --- | --- |
 
 **Apps and services**
 

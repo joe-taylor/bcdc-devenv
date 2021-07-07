@@ -13,7 +13,7 @@ there.
 This should produce several CentOS 7 VirtualBox instances. The main two, titan and
 enceladus, are for apps and databases, respectively. Here we use the
 word "databases" loosely; we are not only referring to relational databases
-(specifically, postgres), but also to NoSQL search platforms like Solr.
+(to wit, postgres), but also to NoSQL search platforms like Solr.
 
 Additionally, we create a Jenkins box, vesta, for running various jobs
 against these dev instances.

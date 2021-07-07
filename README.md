@@ -58,8 +58,34 @@ corresponding entries to /etc/hosts. Alternatively, configure DNS.
 
 **Python virtualenvs**
 
- - for ckan
- - for datapusher
+ - ckan (2.7.17)
+ - datapusher (2.7.16)
+
+**CKAN plugins**
+
+- resource_proxy
+- text_view
+- recline_map_view
+- recline_view
+- datastore
+- datapusher
+- geo_view
+- recline_graph_view
+- geojson_view
+- openapi_view
+- pdf_view
+- edc_rss
+- edc_dataset
+- edc_app
+- edc_geo
+- edc_ngeo
+- edc_webservice
+- edc_idir
+- hierarchy_display
+- hierarchy_form
+- googleanalytics
+- ga-report
+
 
 Source files are available on host via a Vagrant Synced Folder (NFS).
 

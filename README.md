@@ -167,7 +167,7 @@ Source files are available on host via a Vagrant Synced Folder (NFS).
 
 This would complement and not replace the existing VirtualBox VMs. It would be used for things like keycloak.
 
-### Uses vagrant hostsmanager plugin
+### Uses vagrant hostmanager plugin
 
 This will complicate setup, but it may be worthwhile.
 

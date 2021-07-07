@@ -152,6 +152,14 @@ Source files are available on host via a Vagrant Synced Folder (NFS).
  - ckan/ckan
  - bcgov/ckanext-bcgov
  - bcgov/ckanext-bcgov-schema
+ - bcgov/ckanext-ga-report
+ - bcgov/ckanext-googleanalytics
+ - bcgov/ckanext-hierarchy
+ - bcgov/ckanext-openapiviewer
+ - bcgov/ckanext-sso
+ - bcgov/ckanext-edc-rss
+ - okfn/ckanext-envvars
+ - bcdc/ckanext-edc-idir
 
 ## Enhancement ideas
 

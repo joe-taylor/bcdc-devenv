@@ -68,7 +68,7 @@ corresponding entries to /etc/hosts. Alternatively, configure DNS.
 
 ### vesta.local (192.168.15.150)
 
-**Purpose:** Maintenance tasks and migrations
+**Purpose:** Maintenance tasks and migration simulations
 
 **Apps and services**
 

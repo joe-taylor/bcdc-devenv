@@ -15,10 +15,10 @@ postgres, but also NoSQL options like SOLR.
 
 ### titan.local (192.168.15.101)
 
-|Purpose|Hosting CKAN Apps|
-|||
+| Purpose | Hosting CKAN Apps |
+| --- | --- |
 
 ### enceladus.local (192.168.15.102)
 
-|Purpose|Hosting Database and Datastore|
-|||
+| Purpose | Hosting Database and Datastore |
+| --- | --- |

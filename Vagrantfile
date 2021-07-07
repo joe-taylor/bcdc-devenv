@@ -5,6 +5,8 @@ Vagrant.configure("2") do |config|
     web.vm.network "private_network", ip: "192.168.15.101"
     web.vm.hostname = "titan.local"
 
+    web.vm.synced_folder "share/titan", "/vagrant", type: "nfs"
+
     web.vm.provision :ansible do |ansible|
       ansible.playbook = "provisioners/ansible/web-setup.yml"
       ansible.groups = {
@@ -17,6 +19,8 @@ Vagrant.configure("2") do |config|
     db.vm.box = "centos/8"
     db.vm.network "private_network", ip: "192.168.15.102"
     db.vm.hostname = "enceladus.local"
+
+    db.vm.synced_folder "share/enceladus", "/vagrant", type: "nfs"    
 
     db.vm.provision :ansible do |ansible|
       ansible.playbook = "provisioners/ansible/db-setup.yml"

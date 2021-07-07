@@ -59,6 +59,8 @@ corresponding entries to /etc/hosts. Alternatively, configure DNS.
  - for ckan
  - for datapusher
 
+Source files are available on host via a Vagrant Synced Folder (NFS).
+
 ---
 
 ### enceladus.local (192.168.15.102)
@@ -81,6 +83,8 @@ corresponding entries to /etc/hosts. Alternatively, configure DNS.
  - [ckanext-bcgov-schema](https://github.com/bcgov/ckanext-bcgov-schema/tree/master) (latest)
  - Jenkins (7.2.1)
 
+Source files are available on host via a Vagrant Synced Folder (NFS).
+
 ---
 
 ### europa.local (192.168.15.201)
@@ -91,3 +95,5 @@ corresponding entries to /etc/hosts. Alternatively, configure DNS.
 
  - CKAN
  - CKAN UI
+
+Source files are available on host via a Vagrant Synced Folder (NFS).

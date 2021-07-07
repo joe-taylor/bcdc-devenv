@@ -15,6 +15,11 @@ enceladus, are for apps and databases, respectively. Here we use the
 word "databases" loosely; we are not only referring to relational databases
 (specifically, postgres), but also NoSQL search platforms like Solr.
 
+Additionally, we create a Jenkins box, vesta.local, for running various jobs
+against these dev instances.
+
+Finally, there's a box called europa.local which houses the future UI.
+
 ## Provisioned Boxes
 
 ### titan.local (192.168.15.101)

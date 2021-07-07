@@ -159,7 +159,7 @@ Source files are available on host via a Vagrant Synced Folder (NFS).
  - bcgov/ckanext-sso
  - bcgov/ckanext-edc-rss
  - okfn/ckanext-envvars
- - bcdc/ckanext-edc-idir
+ - bcdc/ckanext-edc-idir (gogs)
 
 ## Enhancement ideas
 

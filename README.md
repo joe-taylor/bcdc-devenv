@@ -69,8 +69,8 @@ corresponding entries to /etc/hosts. Alternatively, configure DNS.
 
 **Apps and services**
 
- - [ckanext-bcgov-schema](https://github.com/bcgov/ckanext-bcgov-schema/tree/master)
- - Jenkins
+ - [ckanext-bcgov-schema](https://github.com/bcgov/ckanext-bcgov-schema/tree/master) (latest)
+ - Jenkins (7.2.1)
 
 ---
 

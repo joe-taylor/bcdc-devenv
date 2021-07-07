@@ -6,7 +6,7 @@ Vagrant.configure("2") do |config|
     web.vm.hostname = "titan.local"
 
     web.vm.provision :ansible do |ansible|
-      ansible.playbook = "web-setup.yml"
+      ansible.playbook = "provisioners/ansible/web-setup.yml"
       ansible.groups = {
         "web": ["titan"]
       }
@@ -19,7 +19,7 @@ Vagrant.configure("2") do |config|
     db.vm.hostname = "enceladus.local"
 
     db.vm.provision :ansible do |ansible|
-      ansible.playbook = "db-setup.yml"
+      ansible.playbook = "provisioners/ansible/db-setup.yml"
       ansible.groups = {
         "db": ["enceladus"]
       }

@@ -9,7 +9,7 @@
       - sqlite-devel
       - libcurl-devel
       - pcre-devel
-      - python-devel
+      - python2-devel
       - zlib-devel
     state: present
 

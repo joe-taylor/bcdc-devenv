@@ -1,7 +1,7 @@
 Vagrant.configure("2") do |config|
 
   config.vm.define "titan" do |web|
-    web.vm.box = "centos/7"
+    web.vm.box = "centos/8"
     web.vm.network "private_network", ip: "192.168.15.101"
     web.vm.hostname = "titan.local"
 
@@ -14,7 +14,7 @@ Vagrant.configure("2") do |config|
   end
 
   config.vm.define "enceladus" do |db|
-    db.vm.box = "centos/7"
+    db.vm.box = "centos/8"
     db.vm.network "private_network", ip: "192.168.15.102"
     db.vm.hostname = "enceladus.local"
 

@@ -2,7 +2,7 @@
 - name: Install python prerequisites for postgres
   become: true
   yum:
-    name: python-psycopg2
+    name: python2-psycopg2
     state: present
 
 - name: Check if postgres' data dir is empty
@@ -11,17 +11,22 @@
     path: /var/lib/pgsql/9.6/data/
   register: data_dir
 
+- name: add postgres96 rpm key
+  rpm_key:
+    key: https://download.postgresql.org/pub/repos/yum/RPM-GPG-KEY-PGDG-96
+    state: present
+
 - name: Install postgres 9.6 if the data dir is empty
   become: true
   yum:
     name: "{{ item }}"
     state: present
   with_items:
-    - https://download.postgresql.org/pub/repos/yum/9.6/redhat/rhel-7-x86_64/postgresql96-libs-9.6.22-1PGDG.rhel7.x86_64.rpm
-    - https://download.postgresql.org/pub/repos/yum/9.6/redhat/rhel-7-x86_64/postgresql96-9.6.22-1PGDG.rhel7.x86_64.rpm
-    - https://download.postgresql.org/pub/repos/yum/9.6/redhat/rhel-7-x86_64/postgresql96-devel-9.6.22-1PGDG.rhel7.x86_64.rpm
-    - https://download.postgresql.org/pub/repos/yum/9.6/redhat/rhel-7-x86_64/postgresql96-server-9.6.22-1PGDG.rhel7.x86_64.rpm
-    - https://download.postgresql.org/pub/repos/yum/9.6/redhat/rhel-7-x86_64/postgresql96-contrib-9.6.22-1PGDG.rhel7.x86_64.rpm
+    - https://download.postgresql.org/pub/repos/yum/9.6/redhat/rhel-8-x86_64/postgresql96-libs-9.6.22-1PGDG.rhel8.x86_64.rpm
+    - https://download.postgresql.org/pub/repos/yum/9.6/redhat/rhel-8-x86_64/postgresql96-9.6.22-1PGDG.rhel8.x86_64.rpm
+    - https://download.postgresql.org/pub/repos/yum/9.6/redhat/rhel-8-x86_64/postgresql96-devel-9.6.22-1PGDG.rhel8.x86_64.rpm
+    - https://download.postgresql.org/pub/repos/yum/9.6/redhat/rhel-8-x86_64/postgresql96-server-9.6.22-1PGDG.rhel8.x86_64.rpm
+    - https://download.postgresql.org/pub/repos/yum/9.6/redhat/rhel-8-x86_64/postgresql96-contrib-9.6.22-1PGDG.rhel8.x86_64.rpm
   when: not data_dir.stat.exists
 
 - name: Init postgres db if the data dir is empty

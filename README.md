@@ -52,6 +52,12 @@ corresponding entries to /etc/hosts. Alternatively, configure DNS.
  - Python (2.7.16)
     - virtualenv + pip (???)
  - uwsgi (???)
+ - gunicorn (???)
+
+**Python virtualenvs**
+
+ - for ckan
+ - for datapusher
 
 ---
 

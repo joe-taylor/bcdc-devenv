@@ -2,10 +2,13 @@
 
 ## Contents
 
+1. [Overview](#overview)
 1. [Objective](#objective)
 1. [Requirements](#requirements)
 1. [What's provisioned](#whats-provisioned)
 1. [Repos used](#repos-used)
+
+## Overview
 
 > ⚠️ **Work in progress.** Please do not rely on this repo to create a functioning development environment; it is under active development.
 

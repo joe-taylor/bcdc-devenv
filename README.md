@@ -11,9 +11,9 @@ there.
 ## Objective
 
 This should produce several CentOS 7 instances. The main two, titan and
-enceladus, are for "old UI" CKAN app and databases respectively. We use the
-word "databases" loosely; it not only encompasses postgres, but also NoSQL
-options like Solr.
+enceladus, are for apps and databases, respectively. Here we use the
+word "databases" loosely; we are not only referring to relational databases
+(specifically, postgres), but also NoSQL search platforms like Solr.
 
 ## Provisioned Boxes
 

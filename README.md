@@ -54,7 +54,8 @@ corresponding entries to /etc/hosts. Alternatively, configure DNS.
 
 ### titan.local (192.168.15.101)
 
-**OS:** CentOS 8  
+**OS:** CentOS 8
+
 **Purpose:** Hosting apps (old UI)
 
 **Apps and services**
@@ -107,6 +108,8 @@ Source files are available on host via a Vagrant Synced Folder (NFS).
 
 ### enceladus.local (192.168.15.102)
 
+**OS:** CentOS 8
+
 **Purpose:** Hosting data (old and new UI)
 
 **Apps and services**
@@ -117,6 +120,8 @@ Source files are available on host via a Vagrant Synced Folder (NFS).
 ---
 
 ### vesta.local (192.168.15.150)
+
+**OS:** CentOS 8
 
 **Purpose:** Maintenance tasks and migration simulations
 
@@ -130,6 +135,8 @@ Source files are available on host via a Vagrant Synced Folder (NFS).
 ---
 
 ### europa.local (192.168.15.201)
+
+**OS:** CentOS 8
 
 **Purpose:** Hosting apps (new UI)
 

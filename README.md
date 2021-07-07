@@ -1,3 +1,6 @@
+> ⚠️ **Work in progress.** Please do not rely on this repo to create a functioning development environment as it is under active development in a completely unfinished state.
+
+  
 # BC Data Catalogue Dev Environment
 
 ## Contents
@@ -10,8 +13,6 @@
 2. [Enhancement ideas](#enhancement-ideas)
 
 ## Overview
-
-> ⚠️ **Work in progress.** Please do not rely on this repo to create a functioning development environment; it is under active development.
 
 We want to make the creation of BCDC development environments as easy as
 typing a single command:  `vagrant up`. Or perhaps two: `docker-compose up && vagrant up`.

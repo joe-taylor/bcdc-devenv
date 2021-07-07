@@ -10,15 +10,15 @@ there.
 
 ## Objective
 
-This should produce several CentOS 8 VirtualBox instances. The main two, titan and
+The Vagrantfile produces several CentOS 8 VirtualBox instances. The main two, titan and
 enceladus, are for apps and databases, respectively. Here we use the
 word "databases" loosely; we are not only referring to relational databases
 (to wit, postgres), but also to NoSQL search platforms like Solr.
 
-Additionally, we create a Jenkins box, vesta, for running various jobs
+Additionally, the Vagrantfile creates a Jenkins box, vesta, for running various jobs
 against these dev instances.
 
-Finally, there's a box called europa which houses the future UI.
+Finally, vagrant creates a box called europa to house the future UI.
 
 ## Requirements
 

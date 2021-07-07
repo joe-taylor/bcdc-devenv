@@ -26,6 +26,7 @@ options like Solr.
  - [Datapusher](https://github.com/ckan/datapusher/tree/0.0.15) (0.0.15)
  - Redis (latest)
 
+---
 
 ### enceladus.local (192.168.15.102)
 
@@ -36,6 +37,7 @@ options like Solr.
  - Postgres (9.6)
  - Solr (6.6.0)
 
+---
 
 ### vesta.local (192.168.15.150)
 
@@ -46,6 +48,7 @@ options like Solr.
  - [ckanext-bcgov-schema](https://github.com/bcgov/ckanext-bcgov-schema/tree/master)
  - Jenkins
 
+---
 
 ### europa.local (192.168.15.201)
 

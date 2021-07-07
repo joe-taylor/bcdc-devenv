@@ -1,12 +1,13 @@
+| ⚠️ **This is a work in progress
+
 # BC Data Catalogue Dev Environment
 
 We want to make the creation of BCDC development environments as easy as
 typing a single command:  `vagrant up`.
 
-The Vagrantfile leans heavily on ansible for provisioning. This is a work in
+We lean on Vagrant to create our development environment, and Vagrant in turn leans heavily on ansible for provisioning. Provisioning is a work in
 progress, far from complete; running `vagrant up` will not yet produce a
-working instance of the BC Data Catalogue, but our goal is to eventually get
-there.
+working instance of the BC Data Catalogue.
 
 ## Objective
 

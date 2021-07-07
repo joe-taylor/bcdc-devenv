@@ -136,5 +136,6 @@ Source files are available on host via a Vagrant Synced Folder (NFS).
 
 ## Enhancement ideas
 
-**Create a docker-compose file**  
+### Create a docker-compose file**  
+
 This would be used for things like keycloak.

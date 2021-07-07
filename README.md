@@ -10,7 +10,7 @@ there.
 
 ## Objective
 
-This should produce several CentOS 7 instances. The main two, titan and
+This should produce several CentOS 7 VirtualBox instances. The main two, titan and
 enceladus, are for apps and databases, respectively. Here we use the
 word "databases" loosely; we are not only referring to relational databases
 (specifically, postgres), but also to NoSQL search platforms like Solr.

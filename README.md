@@ -86,6 +86,7 @@ corresponding entries to /etc/hosts. Alternatively, configure DNS.
 - googleanalytics
 - ga-report
 
+To compare to the list of plugins installed in production, use the [status_show API call](https://catalogue.data.gov.bc.ca/api/3/action/status_show).
 
 Source files are available on host via a Vagrant Synced Folder (NFS).
 

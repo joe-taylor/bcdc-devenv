@@ -1,7 +1,10 @@
 ---
 - name: set up database server
   hosts: db
-  become: true
   roles:
-    - psql
-    - solr
+    - name: common
+      become: true
+    - name: psql
+      become: true
+    - name: solr
+      become: true

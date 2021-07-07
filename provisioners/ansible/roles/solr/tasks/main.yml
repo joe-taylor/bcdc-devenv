@@ -1,9 +1,5 @@
 ---
 
-- name: disable selinux
-  ansible.posix.selinux:
-    state: disabled
-
 - name: ensure solr dependencies are installed
   become: true
   yum:

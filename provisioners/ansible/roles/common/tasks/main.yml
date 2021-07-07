@@ -1,0 +1,12 @@
+---
+- name: add app and appadm accounts
+  user:
+    name: "{{item}}"
+    state: present
+  loop:
+    - app
+    - appadm
+
+- name: disable selinux
+  ansible.posix.selinux:
+    state: disabled

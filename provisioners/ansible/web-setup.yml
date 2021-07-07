@@ -1,10 +1,11 @@
 ---
 - name: set up web server
   hosts: web
-  become: true
   roles:
-    - custompython
-    - redis
+    - name: common
+      become: true
+    - name: custompython
+      become: true
+    - name: redis
+      become: true
     - virtualenvs
-    # - ckan
-    # - datapusher

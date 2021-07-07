@@ -133,3 +133,8 @@ Source files are available on host via a Vagrant Synced Folder (NFS).
  - ckan/ckan
  - bcgov/ckanext-bcgov
  - bcgov/ckanext-bcgov-schema
+
+## Enhancement ideas
+
+**Create a docker-compose file**  
+This would be used for things like keycloak.

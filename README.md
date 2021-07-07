@@ -10,7 +10,7 @@ there.
 
 ## Objective
 
-This should produce several CentOS 7 VirtualBox instances. The main two, titan and
+This should produce several CentOS 8 VirtualBox instances. The main two, titan and
 enceladus, are for apps and databases, respectively. Here we use the
 word "databases" loosely; we are not only referring to relational databases
 (to wit, postgres), but also to NoSQL search platforms like Solr.
@@ -41,6 +41,7 @@ corresponding entries to /etc/hosts. Alternatively, configure DNS.
 
 ### titan.local (192.168.15.101)
 
+**OS:** CentOS 8
 **Purpose:** Hosting apps (old UI)
 
 **Apps and services**

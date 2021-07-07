@@ -1,6 +1,6 @@
 > ⚠️ **Work in progress.** This does not yet produce anything useful.
 
-## TOC
+**Contents**
 
 1. [Objective](#objective)
 1. [Requirements](#requirements)

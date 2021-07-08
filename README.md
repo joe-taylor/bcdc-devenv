@@ -165,7 +165,7 @@ Source files are available on host via a Vagrant Synced Folder (NFS).
 
 ### Use docker-compose
 
-This would complement and not replace the existing VirtualBox VMs. It would be used for things like keycloak.
+This would complement - not replace - the existing VirtualBox VMs. It would be used for things like keycloak.
 
 ### Uses vagrant hostmanager plugin
 

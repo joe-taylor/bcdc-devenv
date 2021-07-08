@@ -1,4 +1,4 @@
-> ⚠️ **Work in progress.** Please do not rely on this repo to create a functioning development environment. Although it's under active development, it's currently not in a useful state.
+> ⚠️ **Work in progress.** Please do not rely on this repo to create a functioning development environment. Although it's under active development, it's not yet in a useful state.
 
   
 # BC Data Catalogue Dev Environment

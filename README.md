@@ -180,3 +180,7 @@ This would complement - not replace - the existing VirtualBox VMs. It would be u
 This will complicate setup, but it may be worthwhile.
 
 https://github.com/devopsgroup-io/vagrant-hostmanager
+
+### Consolidate automated tests
+
+There should be an easy way to run all the automated tests at once.

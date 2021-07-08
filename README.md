@@ -72,8 +72,8 @@ corresponding entries to /etc/hosts. Alternatively, configure DNS.
 
 **Python virtualenvs**
 
- - ckan (2.7.17)
- - datapusher (2.7.16)
+ - ckan (using python 2.7.17)
+ - datapusher (using python 2.7.16)
 
 **CKAN plugins**
 

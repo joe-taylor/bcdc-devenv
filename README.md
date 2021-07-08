@@ -1,4 +1,4 @@
-> ⚠️ &nbsp; &nbsp; **Work In Progress**
+> ⚠️ &nbsp; **Work In Progress**
 > 
 > Please do not rely on this repo to create a functioning development environment. Although it's under active development, it's not yet in a useful state. Current focus: ckan.ini template
 

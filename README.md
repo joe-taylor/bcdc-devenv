@@ -1,5 +1,6 @@
 > ⚠️ **Work in progress.** Please do not rely on this repo to create a functioning development environment. Although it's under active development, it's not yet in a useful state.
 
+***Currently being worked on:*** ckan.ini
   
 # BC Data Catalogue Dev Environment
 

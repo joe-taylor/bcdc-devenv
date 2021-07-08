@@ -26,6 +26,8 @@ working instance of the BC Data Catalogue.
 
 `vagrant up` from the root directory, and any time you wish to run the associated ansible playbooks, `vagrant provision`.
 
+Once you've run `vagrant up` and everything's started, you should be able to access the catalogue at http://192.168.15.101.
+
 ## Objective
 
 The Vagrantfile produces several CentOS 8 VirtualBox instances. The main two, titan and

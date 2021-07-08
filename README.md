@@ -41,7 +41,7 @@ word "databases" loosely; we are not only referring to relational databases
 Additionally, the Vagrantfile creates a Jenkins box, vesta, for running various jobs
 against these dev instances.
 
-Finally, vagrant creates a box called europa to house the future UI.
+Finally, the Vagrantfile creates a box called europa to house the future UI.
 
 ## Requirements
 

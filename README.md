@@ -6,11 +6,12 @@
 ## Contents
 
 1. [Overview](#overview)
-1. [Objective](#objective)
-1. [Requirements](#requirements)
-1. [What's provisioned](#whats-provisioned)
-1. [Repos used](#repos-used)
-2. [Enhancement ideas](#enhancement-ideas)
+2. [Usage](#usage)
+3. [Objective](#objective)
+4. [Requirements](#requirements)
+5. [What's provisioned](#whats-provisioned)
+6. [Repos used](#repos-used)
+7. [Enhancement ideas](#enhancement-ideas)
 
 ## Overview
 
@@ -20,6 +21,10 @@ typing a single command or two  `vagrant up` or perhaps `docker-compose up && va
 We lean on Vagrant to create our development environment, with our Vagrantfile in turn leaning heavily on Ansible for provisioning. Provisioning is a work in
 progress, far from complete; running `vagrant up` will not yet produce a
 working instance of the BC Data Catalogue.
+
+## Usage
+
+`vagrant up` from the root directory, and any time you wish to run the associated ansible playbooks, `vagrant provision`.
 
 ## Objective
 

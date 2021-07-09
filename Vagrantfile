@@ -1,12 +1,13 @@
 Vagrant.configure("2") do |config|
 
-  [
-    { :name => "titan", :ip => "192.168.15.101", :playbook => "web-setup.yml" },
-    { :name => "enceladus", :ip => "192.168.15.102", :playbook => "db-setup.yml" }
+  vms = [
+    { :name => "titan", :ip => "192.168.15.101", :playbook => "web-setup.yml", :group => "web" },
+    { :name => "enceladus", :ip => "192.168.15.102", :playbook => "db-setup.yml", :group => "db" }
+  ]
 
-  ].each do |info|
+  vms.each do |info|
 
-    name, ip, playbook = info.values_at(:name, :ip, :playbook)
+    name, ip, playbook, group = info.values_at(:name, :ip, :playbook)
 
     config.vm.define name do |web|
       web.vm.box = "centos/8"
@@ -17,11 +18,11 @@ Vagrant.configure("2") do |config|
 
       web.vm.provision :ansible do |ansible|
         ansible.playbook = "provisioners/ansible/#{playbook}"
-        ansible.groups = {
-          "web": ["titan"],
-          "db": ["enceladus"]
-        }
+        ansible.groups = vms.each_with_object(Hash.new { |h,k| h[k] = [] }) do |vm, o|
+          o[vm[:group]] << vm[:name]
+        end
       end
+
     end
 
   end

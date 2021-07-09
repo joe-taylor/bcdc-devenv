@@ -1,5 +1,12 @@
 Vagrant.configure("2") do |config|
 
+  def set_groups(ansible)
+    ansible.groups = {
+      "web": ["titan"],
+      "db": ["enceladus"]
+    }
+  end
+
   config.vm.define "titan" do |web|
     web.vm.box = "centos/8"
     web.vm.network "private_network", ip: "192.168.15.101"
@@ -9,9 +16,7 @@ Vagrant.configure("2") do |config|
 
     web.vm.provision :ansible do |ansible|
       ansible.playbook = "provisioners/ansible/web-setup.yml"
-      ansible.groups = {
-        "web": ["titan"]
-      }
+      set_groups ansible
     end
   end
 
@@ -24,9 +29,7 @@ Vagrant.configure("2") do |config|
 
     db.vm.provision :ansible do |ansible|
       ansible.playbook = "provisioners/ansible/db-setup.yml"
-      ansible.groups = {
-        "db": ["enceladus"]
-      }
+      set_groups ansible
     end
   end
 

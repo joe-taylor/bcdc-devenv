@@ -29,23 +29,25 @@
 - name: Download custom python
   get_url:
     url: https://www.python.org/ftp/python/2.7.16/Python-2.7.16.tgz
-    dest: /home/vagrant/Python-2.7.16.tgz
+    dest: /tmp/Python-2.7.16.tgz
   register: python_downloaded
 
 - name: Extract python archive
   unarchive:
-    src: /home/vagrant/Python-2.7.16.tgz
-    dest: /home/vagrant
+    src: /tmp/Python-2.7.16.tgz
+    dest: /tmp
     remote_src: yes
-  when: python_downloaded.changed
 
 - name: Configure and install
+  become: true
+  become_user: appadm
   shell:
     cmd: ./configure --prefix=/s00/python && make && make install
-    chdir: /home/vagrant/Python-2.7.16
-  when: python_downloaded.changed
+    chdir: /tmp/Python-2.7.16
+    creates: /tmp/Python-2.7.16.tgz
 
 - name: Install pip and virtualenv
+  become: true
+  become_user: appadm
   shell:
     cmd: /s00/python/bin/python -m ensurepip && /s00/python/bin/pip install virtualenv
-  when: python_downloaded.changed

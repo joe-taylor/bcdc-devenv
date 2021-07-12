@@ -8,4 +8,6 @@
       become: true
     - name: redis
       become: true
-    - virtualenvs
+    - name: ckan
+      tags: repos
+    #- virtualenvs

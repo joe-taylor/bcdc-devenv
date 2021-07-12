@@ -1,0 +1,44 @@
+---
+
+- name: ckan p1 config folder exists
+  file:
+    path: "{{item}}"
+    owner: appadm
+    group: appadm
+    state: directory
+  loop:
+    - /s00
+    - /s00/etc
+    - /s00/etc/ckan
+    - /s00/etc/ckan/p1
+
+- name: apps folder exists
+  file:
+    path: /apps
+    state: directory
+    owner: appadm
+    group: appadm
+
+- name: ckan folder exists
+  file:
+    path: /apps/ckan
+    state: directory
+    owner: app
+    group: app
+
+- name: create ckan virtualenv
+  become: true
+  become_user: app
+  pip:
+    name: git+https://github.com/bcgov/ckanext-bcgov.git@{{ckanext_bcgov_version}}#egg=ckanext
+    editable: true
+    virtualenv: /apps/ckan/p1
+    virtualenv_command: /s00/python/bin/virtualenv
+    virtualenv_python: /s00/python/bin/python
+
+- name: install ckanext-bcgov requirements
+  become: true
+  become_user: app
+  pip:
+    requirements: /apps/ckan/p1/src/ckanext/requirements.txt
+    virtualenv: /apps/ckan/p1

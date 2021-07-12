@@ -1,5 +1,9 @@
 ---
-- name: add app and appadm accounts
+- name: disable selinux
+  ansible.posix.selinux:
+    state: disabled
+
+- name: app and appadm accounts exist
   user:
     name: "{{item}}"
     state: present
@@ -7,6 +11,9 @@
     - app
     - appadm
 
-- name: disable selinux
-  ansible.posix.selinux:
-    state: disabled
+- name: app is in the appadm group
+  user:
+    name: app
+    append: true
+    groups:
+      - appadm

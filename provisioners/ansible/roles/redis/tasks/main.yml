@@ -5,9 +5,9 @@
     name: redis
     state: present
 
-- name: redis service is enabled
+- name: redis service is disabled
   become: true
   service:
     name: redis
-    state: started
-    enabled: true
+    state: stopped
+    enabled: false

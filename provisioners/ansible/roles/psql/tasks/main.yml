@@ -1,12 +1,10 @@
 ---
 - name: Install python prerequisites for postgres
-  become: true
   yum:
     name: python3-psycopg2
     state: present
 
 - name: Check if postgres' data dir is empty
-  become: true
   stat:
     path: /var/lib/pgsql/9.6/data/
   register: data_dir
@@ -17,7 +15,6 @@
     state: present
 
 - name: Install postgres 9.6 if the data dir is empty
-  become: true
   yum:
     name: "{{ item }}"
     state: present
@@ -30,19 +27,16 @@
   when: not data_dir.stat.exists
 
 - name: Init postgres db if the data dir is empty
-  become: true
   shell: /usr/pgsql-9.6/bin/postgresql96-setup initdb
   when: not data_dir.stat.exists
 
 - name: Start postgres service
-  become: true
   service:
     name: postgresql-9.6
     state: started
     enabled: true
 
 - name: Reload postgres service
-  become: true
   service:
     name: postgresql-9.6
     state: reloaded

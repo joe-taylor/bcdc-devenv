@@ -1,0 +1,3 @@
+beaker_secret: "{{lookup('community.general.random_string', upper=true, lower=true, numbers=true, special=false, length=32)}}"
+db_ip: 192.168.15.102
+site_host: 192.168.15.101

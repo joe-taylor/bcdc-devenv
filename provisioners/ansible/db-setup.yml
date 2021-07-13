@@ -2,7 +2,10 @@
 - name: set up database server
   hosts: db
   become: true
+  vars_files:
+    - vars/main.yml
   roles:
     - common
     - psql
     - solr
+    - ckandb

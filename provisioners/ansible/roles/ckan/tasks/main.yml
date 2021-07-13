@@ -26,19 +26,25 @@
     owner: app
     group: app
 
-- name: logs directory exists
-  file:
-    path: /apps/logs
-    state: directory
-    owner: app
-    group: app
-
 - name: logs directory for ckan exists
   file:
-    path: /apps/logs/ckanp1
+    path: "{{item}}"
     state: directory
     owner: app
     group: app
+  loop:
+    - /apps/logs
+    - /apps/logs/ckanp1
+
+- name: data dir exists
+  file:
+    path: "{{item}}"
+    state: directory
+    owner: app
+    group: app
+  loop:
+    - /apps/ckan/upload
+    - /apps/ckan/upload/p1
 
 - name: create ckan virtualenv
   become_user: app
@@ -55,35 +61,9 @@
     requirements: /apps/ckan/p1/src/ckanext/requirements.txt
     virtualenv: /apps/ckan/p1
 
-- name: Create ckan postgres user
-  become_user: postgres
-  postgresql_user:
-    name: ckan
-    password: ckan
-
-- name: Create datastore postgres user
-  become_user: postgres
-  postgresql_user:
-    name: datastore
-    password: datastore    
-
-- name: Create ckan database
-  become_user: postgres
-  postgresql_db:
-    name: ckan
-    encoding: UTF-8
-    owner: ckan
-
-- name: Create datastore database
-  become_user: postgres
-  postgresql_db:
-    name: datastore
-    encoding: UTF-8
-    owner: ckan
-
-- name: create system users
-  user:
-    name: "{{ item }}"
-  loop:
-    - ckan
-    - datastore
+- name: ckan configuration exists
+  template:
+    src: ckan.ini.j2
+    dest: /s00/etc/ckan/p1/ckan.ini
+    owner: appadm
+    group: appadm

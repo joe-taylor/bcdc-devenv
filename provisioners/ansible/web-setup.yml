@@ -1,13 +1,10 @@
 ---
 - name: set up web server
   hosts: web
+  become: true
   roles:
     - name: common
-      become: true
     - name: custompython
-      become: true
     - name: redis
-      become: true
     - name: ckan
       tags: repos
-    #- virtualenvs

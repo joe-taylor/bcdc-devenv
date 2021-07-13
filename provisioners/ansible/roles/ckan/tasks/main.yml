@@ -41,7 +41,6 @@
     group: app
 
 - name: create ckan virtualenv
-  become: true
   become_user: app
   pip:
     name: git+https://github.com/bcgov/ckanext-bcgov.git@{{ckanext_bcgov_version}}#egg=ckanext
@@ -51,28 +50,24 @@
     virtualenv_python: /s00/python/bin/python
 
 - name: install ckanext-bcgov requirements
-  become: true
   become_user: app
   pip:
     requirements: /apps/ckan/p1/src/ckanext/requirements.txt
     virtualenv: /apps/ckan/p1
 
 - name: Create ckan postgres user
-  become: true
   become_user: postgres
   postgresql_user:
     name: ckan
     password: ckan
 
 - name: Create datastore postgres user
-  become: true
   become_user: postgres
   postgresql_user:
     name: datastore
     password: datastore    
 
 - name: Create ckan database
-  become: true
   become_user: postgres
   postgresql_db:
     name: ckan
@@ -80,7 +75,6 @@
     owner: ckan
 
 - name: Create datastore database
-  become: true
   become_user: postgres
   postgresql_db:
     name: datastore
@@ -88,7 +82,6 @@
     owner: ckan
 
 - name: create system users
-  become: true
   user:
     name: "{{ item }}"
   loop:

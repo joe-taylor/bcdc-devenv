@@ -22,7 +22,7 @@ Vagrant.configure("2") do |config|
       # vconf.vm.synced_folder "share/#{name}", "/vagrant", type: "nfs"
 
       vconf.vm.provision :ansible do |ansible|
-        ansible.playbook = "provisioners/ansible/#{playbook}"
+        ansible.playbook = "provisioning/#{playbook}"
         ansible.groups = vms.each_with_object(Hash.new { |h,k| h[k] = [] }) do |vm, o|
           o[vm[:group]] << vm[:name]
         end

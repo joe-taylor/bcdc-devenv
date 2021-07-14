@@ -78,3 +78,9 @@
       paster --plugin=ckan db init --config /s00/etc/ckan/p1/ckan.ini
   tags:
     - init-db
+
+- name: uwsgi is available
+  become_user: appadm
+  shell:
+    cmd: pip2 install uwsgi==2.0.17.1 --prefix /s00
+    creates: /s00/bin/uwsgi

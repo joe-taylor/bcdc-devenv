@@ -17,11 +17,9 @@ Vagrant.configure("2") do |config|
       vconf.vm.provider :virtualvconf do |v|
         v.name = name
         v.memory = 512
-        v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
-        v.customize ["modifyvm", :id, "--ioapic", "on"]
       end
 
-      vconf.vm.synced_folder "share/#{name}", "/vagrant", type: "nfs"
+      # vconf.vm.synced_folder "share/#{name}", "/vagrant", type: "nfs"
 
       vconf.vm.provision :ansible do |ansible|
         ansible.playbook = "provisioners/ansible/#{playbook}"

@@ -3,13 +3,13 @@
   become_user: postgres
   postgresql_user:
     name: ckan
-    password: ckan
+    password: vagrant
 
 - name: Create datastore postgres user
   become_user: postgres
   postgresql_user:
     name: datastore
-    password: datastore
+    password: vagrant
 
 - name: Create ckan database
   become_user: postgres
@@ -31,3 +31,20 @@
   loop:
     - ckan
     - datastore
+
+- name: solr ckan core exists
+  become_user: solr
+  shell:
+    cmd: /opt/solr/bin/solr create_core -c ckan
+    creates: /var/solr/data/ckan/core.properties
+
+- name: solr core schema exists
+  become_user: solr
+  template:
+    src: schema.xml.j2
+    dest: /var/solr/data/ckan/conf/schema.xml
+
+- name: restart solr
+  service:
+    name: solr
+    state: restarted

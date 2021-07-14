@@ -8,4 +8,5 @@
     - common
     - psql
     - solr
-    - ckandb
+    - name: ckandb
+      tags: ckandb

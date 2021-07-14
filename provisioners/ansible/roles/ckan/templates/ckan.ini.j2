@@ -1,0 +1,182 @@
+[DEFAULT]
+debug = true
+
+[server:main]
+use = egg:Paste#http
+host = 0.0.0.0
+port = 5000
+use_threadpool = true
+threadpool_workers = 32
+
+[app:main]
+use = egg:ckan
+full_stack = true
+cache_dir = 127.0.0.1:6379
+beaker.session.key = vagrant
+beaker.session.type = redis
+beaker.session.url = 127.0.0.1:6379
+ckan.tracking_enabled = true
+ckan.cache_enabled = true
+ckan.static_max_age = 2592000
+ckan.redis.url = redis://127.0.0.1:6379/1
+beaker.session.secret = {{beaker_secret}}
+app_instance_uuid = {{ lookup('password', '/dev/null chars=ascii_letters,digits') | to_uuid }}
+who.config_file = %(here)s/who.ini
+who.log_level = error
+who.log_file = %(cache_dir)s/who_log.ini
+who.timeout = 120
+who.httponly = false
+who.secure = true
+sqlalchemy.url = postgresql://ckan:vagrant@{{ db_ip }}:5432/ckan
+sqlalchemy.pool_size = 10
+sqlalchemy.max_overflow = 25
+sqlalchemy.pool_recycle = 3600
+ckan.datastore.write_url = postgresql://ckan:vagrant@{{ db_ip }}:5432/datastore
+ckan.datastore.read_url = postgresql://datastore:vagrant@{{ db_ip }}:5432/datastore
+ckan.datastore.enabled = true
+ckan.datastore.sqlalchemy.pool_size = 10
+ckan.datastore.sqlalchemy.max_overflow = 25
+ckan.datastore.sqlalchemy.pool_recycle = 3600
+ckan.datastore.default_fts_lang = english
+ckan.datastore.sqlsearch.enabled = false
+ckan.site_url = http://{{site_host}}:5000
+ckan.api_key = {{ lookup('password', '/dev/null chars=ascii_letters,digits') | to_uuid }}
+ckan.cors.origin_allow_all = true
+edc.imap_url_pub=http://maps.gov.bc.ca/ess/hm/imap4m/?catalogLayers=
+edc.imap_url_gov=https://arcmaps.gov.bc.ca/ess/hm/imap4m/?catalogLayers=
+ckan.auth.anon_create_dataset = false
+ckan.auth.create_unowned_dataset = false
+ckan.auth.create_dataset_if_not_in_organization = false
+ckan.auth.user_create_groups = false
+ckan.auth.user_create_organizations = false
+ckan.auth.user_delete_groups = false
+ckan.auth.user_delete_organizations = false
+ckan.auth.create_user_via_api = true
+ckan.auth.create_user_via_web = false
+ckan.auth.roles_that_cascade_to_sub_groups = admin
+ckan.site_id = ckan
+solr_url = http://{{ db_ip }}:8983
+ckan.search.show_all_types = true
+ckan.search.automatic_indexing = true
+ckan.search.solr_commit = false
+search.facets.limit = 500
+search.facets.default = 20
+
+# todo: see about enabling edc_idir
+ckan.plugins =
+    resource_proxy text_view recline_map_view recline_view datastore datapusher geo_view
+    recline_graph_view geojson_view openapi_view pdf_view
+    edc_rss edc_dataset edc_app edc_geo edc_ngeo edc_webservice
+    hierarchy_display hierarchy_form googleanalytics ga-report
+ckan.views.default_views = text_view recline_view image_view webpage_view recline_grid_view geojson_view geo_view pdf_view openapi_view
+ckanext.geoview.ol_viewer.formats = wms wfs
+ckanext.spatial.common_map.type = custom
+ckanext.spatial.common_map.custom.url = https://services.arcgisonline.com/arcgis/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}.png
+ckanext.spatial.common_map.attribution = Map data &copy; Province of British Columbia, Tiles Courtesy of <a href="https://services.arcgisonline.com/arcgis/rest/services/Canvas/World_Light_Gray_Base/MapServer" target="_blank">ESRI Inc.</a>
+edc.eas_url=https://apps.gov.bc.ca/int/eas/login.jsp
+edc.edc_fqdn = http://{{site_host}}:5000
+edc.major_version = P1
+bcgov.dashboard.api_url = https://argg.apps.gov.bc.ca/int/
+bcgov.ofi.api.public_url = https://apps.gov.bc.ca/pub/dwds-ofi
+bcgov.ofi.api.secure_url = https://apps.gov.bc.ca/pub/dwds-ofi/secure
+bcgov.ofi.api.convert_to_single_res = true
+bcgov.pow.public_url = https://apps.gov.bc.ca/pub/dwds-ofi
+bcgov.pow.secure_url = https://apps.gov.bc.ca/ext/dwds-pow
+bcgov.pow.pow_ui_path = /jsp/dwds_pow_current_order.jsp?
+bcgov.pow.env = prod
+bcgov.pow.past_orders_nbr = 5
+bcgov.pow.custom_aoi_url = http://maps.gov.bc.ca/ess/hm/aoi/
+bcgov.pow.persist_config = true
+bcgov.pow.enable_mow = false
+bcgov.pow.user_pow_ofi = true
+bcgov.pow.order_source = bcdc
+bcgov.pow.order_details.aoi_type = 0
+bcgov.pow.order_details.aoi =
+bcgov.pow.order_details.clipping_method_type_id = 1
+bcgov.pow.order_details.ordering_application = BCDC
+bcgov.pow.order_details.format_type = 3
+bcgov.pow.order_details.csr_type = 4
+bcgov.pow.order_details.item.metadata_url = http://{{site_host}}:5000/dataset/
+ckan.site_title = Data Catalogue
+ckan.site_logo = /base/images/ckan-logo.png
+ckan.site_description =
+ckan.favicon = https://data.gov.bc.ca/favicon.ico
+ckan.gravatar_default = identicon
+ckan.preview.direct = png jpg gif
+ckan.preview.loadable = html htm rdf+xml owl+xml xml n3 n-triples turtle plain atom csv tsv rss txt json
+edc.siteminder_return_url = http://{{site_host}}:5000/user/logged_out_redirect
+
+# todo - create a local docker container for this too
+licenses_group_url = https://licenses-bcdc.data.gov.bc.ca/bcdc_licenses.json
+sectors_file_url = https://licenses-bcdc.data.gov.bc.ca/bcdc_sectors.json
+
+ckan.locale_default = en
+ckan.locale_order = en pt_BR ja it cs_CZ ca es fr el sv sr sr@latin no sk fi ru de pl nl bg ko_KR hu sa sl lv
+ckan.locales_offered =
+ckan.locales_filtered_out = en_GB
+ckan.feeds.authority_name =
+ckan.feeds.date =
+ckan.feeds.author_name =
+ckan.feeds.author_link =
+ckan.storage_path = /apps/ckan/upload/p1
+ckan.max_resource_size = 150
+ckan.max_image_size = 1
+ckan.datapusher.url = http://127.0.0.1:8800/
+ckan.datapusher.formats = csv xls xlsx tsv application/csv application/vnd.ms-excel application/vnd.openxmlformats-officedocument.spreadsheetml.sheet application/vnd.ms-excel
+ckan.activity_streams_enabled = true
+ckan.activity_list_limit = 15
+
+# todo - enable with a debugging smtp server (mail capture)
+ckan.activity_streams_email_notifications = false
+
+ckan.email_notifications_since = 2 days
+email_to = datacat@example.com
+error_email_from = datacat@example.com
+smtp.server = localhost
+smtp.mail_from = datacat@example.com
+
+googleanalytics.id = 
+googleanalytics.account = 
+googleanalytics.username = 
+googleanalytics.password =
+googleanalytics_resource_prefix = 
+googleanalytics.domain = 
+googleanalytics.track_events = false
+googleanalytics.token.filepath = 
+
+ga-report.period = monthly
+ga-report.bounce_url = /
+[loggers]
+keys = root, ckan, ckanext
+[handlers]
+keys = rotfile
+[formatters]
+keys = generic
+[logger_root]
+level = ERROR
+handlers = rotfile
+[logger_auth]
+level = WARN
+handlers = rotfile
+qualname = auth
+[handler_rotfile]
+class = handlers.RotatingFileHandler
+args = ('/apps/logs/ckanp1/p1.log', 'w', 10485760, 5)
+level = NOTSET
+formatter = generic
+[formatter_generic]
+format = %(asctime)s,%(msecs)03d %(levelname)-5.5s [%(name)s] %(message)s
+datefmt = %Y-%m-%d %H:%M:%S
+[logger_root]
+level = ERROR
+handlers = rotfile
+[logger_ckan]
+level = ERROR
+handlers = rotfile
+qualname = ckan
+propagate = 0
+[logger_ckanext]
+level = ERROR
+handlers = rotfile
+qualname = ckanext
+propagate = 0

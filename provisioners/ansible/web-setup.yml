@@ -9,4 +9,4 @@
     - name: custompython
     - name: redis
     - name: ckan
-      tags: repos
+      tags: ckan

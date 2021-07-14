@@ -61,9 +61,20 @@
     requirements: /apps/ckan/p1/src/ckanext/requirements.txt
     virtualenv: /apps/ckan/p1
 
-- name: ckan configuration exists
+- name: ckan is configured
   template:
     src: ckan.ini.j2
     dest: /s00/etc/ckan/p1/ckan.ini
     owner: appadm
     group: appadm
+  tags:
+    - copy-config
+
+- name: db is initialized
+  become_user: app
+  shell:
+    cmd: >
+      source /apps/ckan/p1/bin/activate
+      paster --plugin=ckan db init --config /s00/etc/ckan/p1/ckan.ini
+  tags:
+    - init-db

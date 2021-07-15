@@ -30,8 +30,22 @@
   shell: /usr/pgsql-9.6/bin/postgresql96-setup initdb
   when: not data_dir.stat.exists
 
-- name: Reload postgres service
+- name: pg_hba.conf allows ipv4 connections
+  lineinfile:
+    path: /var/lib/pgsql/9.6/data/pg_hba.conf
+    line: host    all             all             0.0.0.0/0            md5    
+    insertafter: ^host.*127\.0\.0\.1/32
+    state: present    
+
+- name: postgresql.conf listens on all interfaces
+  lineinfile:
+    path: /var/lib/pgsql/9.6/data/postgresql.conf
+    line: listen_addresses = '*'
+    insertbefore: ^#listen_addresses = 'localhost'
+    state: present
+
+- name: Restart postgres service
   service:
     name: postgresql-9.6
-    state: reloaded
+    state: restarted
     enabled: true

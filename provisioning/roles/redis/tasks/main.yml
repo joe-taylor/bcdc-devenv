@@ -9,5 +9,5 @@
   become: true
   service:
     name: redis
-    state: stopped
+    state: started
     enabled: false

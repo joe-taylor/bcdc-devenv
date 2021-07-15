@@ -1,7 +1,6 @@
 ---
 
 - name: Install python dev dependencies
-  become: true
   yum:
     name:
       - openssl-devel
@@ -14,17 +13,16 @@
     state: present
 
 - name: Ensure compiler is available
-  become: true
   yum:
     name: "@Development tools"
     state: present
 
 - name: Create destination directory for python installation
-  become: true
   file:
     path: /s00/python
     state: directory
-    owner: vagrant    
+    owner: appadm
+    group: appadm    
 
 - name: Download custom python
   get_url:
@@ -33,21 +31,22 @@
   register: python_downloaded
 
 - name: Extract python archive
+  become_user: appadm
   unarchive:
     src: /tmp/Python-2.7.16.tgz
     dest: /tmp
     remote_src: yes
 
 - name: Configure and install
-  become: true
   become_user: appadm
   shell:
     cmd: ./configure --prefix=/s00/python && make && make install
     chdir: /tmp/Python-2.7.16
-    creates: /tmp/Python-2.7.16.tgz
+    creates: /s00/python/bin/python
+  tags:
+    - install-python
 
 - name: Install pip and virtualenv
-  become: true
   become_user: appadm
   shell:
     cmd: /s00/python/bin/python -m ensurepip && /s00/python/bin/pip install virtualenv

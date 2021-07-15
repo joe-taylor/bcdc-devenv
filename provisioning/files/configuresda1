@@ -1,0 +1,6 @@
+label: dos
+label-id: 0xef431952
+device: /dev/sda
+unit: sectors
+
+/dev/sda1 : start=        2048, size=    41940992, type=83, bootable

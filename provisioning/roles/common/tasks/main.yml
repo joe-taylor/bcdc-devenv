@@ -3,6 +3,12 @@
   ansible.posix.selinux:
     state: disabled
 
+- name: disable firewall
+  service:
+    name: firewalld
+    state: stopped
+    enabled: false
+
 - name: app and appadm accounts exist
   user:
     name: "{{item}}"

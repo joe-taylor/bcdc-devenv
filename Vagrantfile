@@ -1,13 +1,15 @@
 Vagrant.configure("2") do |config|
 
   vms = [
-    { :name => "titan", :ip => "192.168.15.101", :playbook => "web-setup.yml", :group => "web" },
-    { :name => "enceladus", :ip => "192.168.15.102", :playbook => "db-setup.yml", :group => "db" }
+    { :name => "enceladus", :ip => "192.168.15.102", :playbook => "db-setup.yml", :group => "db" },
+    { :name => "titan", :ip => "192.168.15.101", :playbook => "web-setup.yml", :group => "web" }
   ]
+
+  config.vagrant.plugins = ["vagrant-disksize"]
 
   vms.each do |info|
 
-    name, ip, playbook, group = info.values_at(:name, :ip, :playbook)
+    name, ip, playbook, group = info.values_at(:name, :ip, :playbook, :group)
 
     config.vm.define name, :primary => name == "titan" do |vconf|
       vconf.vm.box = "centos/8"
@@ -19,9 +21,9 @@ Vagrant.configure("2") do |config|
         v.memory = 4080
       end
 
-      # if name == "enceladus"
-      #   config.disksize.size = '20GB'
-      # end
+      if name == "enceladus"
+        config.disksize.size = '20GB'
+      end
 
       # vconf.vm.synced_folder "share/#{name}", "/vagrant", type: "nfs"
 
@@ -30,6 +32,8 @@ Vagrant.configure("2") do |config|
         ansible.groups = vms.each_with_object(Hash.new { |h,k| h[k] = [] }) do |vm, o|
           o[vm[:group]] << vm[:name]
         end
+
+        ansible.galaxy_role_file = "provisioning/#{group}-ansible-requirements.yml"
       end
     end
 

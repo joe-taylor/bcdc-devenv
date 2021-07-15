@@ -70,14 +70,23 @@
   tags:
     - copy-config
 
-- name: db is initialized
-  become_user: app
-  shell:
-    cmd: >
-      source /apps/ckan/p1/bin/activate
-      paster --plugin=ckan db init --config /s00/etc/ckan/p1/ckan.ini
-  tags:
-    - init-db
+- name: who.ini is in the right location
+  file:
+    src: /apps/ckan/p1/src/ckan/ckan/config/who.ini
+    dest: /s00/etc/ckan/p1/who.ini
+    state: link
+    owner: app
+    group: app
+    mode: 0644
+
+# - name: db is initialized
+#   become_user: app
+#   shell:
+#     cmd: >
+#       source /apps/ckan/p1/bin/activate
+#       paster --plugin=ckan db init --config /s00/etc/ckan/p1/ckan.ini
+#   tags:
+#     - init-db
 
 - name: uwsgi is available
   become_user: appadm

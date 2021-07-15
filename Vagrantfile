@@ -16,8 +16,12 @@ Vagrant.configure("2") do |config|
 
       vconf.vm.provider :virtualvconf do |v|
         v.name = name
-        v.memory = 512
+        v.memory = 4080
       end
+
+      # if name == "enceladus"
+      #   config.disksize.size = '20GB'
+      # end
 
       # vconf.vm.synced_folder "share/#{name}", "/vagrant", type: "nfs"
 

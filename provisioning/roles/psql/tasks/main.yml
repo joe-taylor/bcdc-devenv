@@ -30,13 +30,8 @@
   shell: /usr/pgsql-9.6/bin/postgresql96-setup initdb
   when: not data_dir.stat.exists
 
-- name: Start postgres service
-  service:
-    name: postgresql-9.6
-    state: started
-    enabled: true
-
 - name: Reload postgres service
   service:
     name: postgresql-9.6
     state: reloaded
+    enabled: true

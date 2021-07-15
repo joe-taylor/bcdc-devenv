@@ -146,35 +146,45 @@ googleanalytics.token.filepath =
 
 ga-report.period = monthly
 ga-report.bounce_url = /
+
 [loggers]
 keys = root, ckan, ckanext
+
 [handlers]
 keys = rotfile
+
 [formatters]
 keys = generic
+
 [logger_root]
 level = ERROR
 handlers = rotfile
+
 [logger_auth]
 level = WARN
 handlers = rotfile
 qualname = auth
+
 [handler_rotfile]
 class = handlers.RotatingFileHandler
 args = ('/apps/logs/ckanp1/p1.log', 'w', 10485760, 5)
 level = NOTSET
 formatter = generic
+
 [formatter_generic]
 format = %(asctime)s,%(msecs)03d %(levelname)-5.5s [%(name)s] %(message)s
 datefmt = %Y-%m-%d %H:%M:%S
+
 [logger_root]
 level = ERROR
 handlers = rotfile
+
 [logger_ckan]
 level = ERROR
 handlers = rotfile
 qualname = ckan
 propagate = 0
+
 [logger_ckanext]
 level = ERROR
 handlers = rotfile

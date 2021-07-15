@@ -5,8 +5,13 @@
   vars_files:
     - vars/main.yml
   pre_tasks:
+
+    # in order to make use of the extra space,
+    # we have to resize the partition to match what virtualbox
+    # has alotted for us.
+
     - name: copy cfdisk script
-      copy:
+      template:
         src: configuresda1
         dest: /configuresda1
 

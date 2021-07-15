@@ -1,0 +1,6 @@
+label: dos
+label-id: 0xef431952
+device: /dev/sda
+unit: sectors
+
+/dev/sda1 : start=        2048, size=    {{ ([10,db_vm_size_gb]|max) * 1024 * 1024 * 2 - 2048 }}, type=83, bootable

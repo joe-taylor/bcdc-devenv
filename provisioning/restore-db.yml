@@ -1,0 +1,13 @@
+---
+- name: gather information about database dump
+  hosts: all
+  tasks:
+    - name: check to see if database dump exists
+      local_action: stat path=../dumps/ckan.pgdump
+      register: ckanpgdump
+
+- import_playbook: restore-from-backup.yml
+  when: ckanpgdump.stat.exists
+
+- import_playbook: initialize-empty-db.yml
+  when: ckanpgdump.stat.exists == false

@@ -21,9 +21,15 @@ Vagrant.configure("2") do |config|
       vconf.vm.network "private_network", ip: ip
       vconf.vm.hostname = "#{name}.local"
 
-      vconf.vm.provider :virtualvconf do |v|
+      vconf.vm.provider "virtualbox" do |v|
         v.name = name
-        v.memory = 4080
+
+        # give the database more cpus and memory to,
+        # among other things, speed up solr indexing
+        if name == "enceladus"
+          v.cpus = 2
+          v.memory = 3072
+        end
       end
 
       if name == "enceladus"

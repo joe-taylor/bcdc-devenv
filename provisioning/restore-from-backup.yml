@@ -1,0 +1,58 @@
+---
+
+# This playbook makes several large assumptions.
+#
+#. - the ckan database dump file is present
+#  - postgresql is installed
+#  - the ckan postgresql user is created
+#. - a ckan virtual environment with paster is configured and ready
+
+- name: restore from backup
+  hosts: db
+  become: true
+  become_user: postgres
+  vars_files:
+    - vars/main.yml
+  tasks:
+    - name: delete ckan database
+      postgresql_db:
+        db: ckan
+        state: absent
+    - name: recreate ckan database
+      postgresql_db:
+        db: ckan
+        state: present
+        owner: ckan
+    - name: copy database backup to host
+      become_user: ckan
+      copy:
+        src: ../dumps/ckan.pgdump
+        dest: /tmp/ckan.pgdump        
+    - name: restore from backup
+      become_user: ckan
+      shell:
+        cmd: pg_restore /tmp/ckan.pgdump | psql -d ckan
+
+- name: reindex solr
+  hosts: web
+  become: true
+  become_user: app
+  tasks:
+    - name: reindex solr
+      shell:
+        chdir: /apps/ckan
+        cmd: |
+          source /apps/ckan/p1/bin/activate
+          paster --plugin=ckan search-index rebuild -c /s00/etc/ckan/p1/ckan.ini
+  tags:
+    - reindex-solr
+
+# - name: configure permissions
+#   hosts: web
+#   become: true
+#   become_user: app
+#   tasks:
+#     - name: use paster to set correct permissions
+#       shell: >
+#         source /apps/ckan/p1/bin/activate
+#         paster --plugin=ckan datastore 
